@@ -1,0 +1,40 @@
+<!-- Header Component -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Alumnos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Main Content -->
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <!-- Matrícula Input -->
+      <ion-label>Matrícula:</ion-label>
+      <ion-input type="text" [(ngModel)]="matricula" placeholder="Matrícula"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <!-- Nombre Input -->
+      <ion-label>Nombre:</ion-label>
+      <ion-input type="text" [(ngModel)]="nombre" placeholder="Nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <!-- Buttons -->
+      <ion-button type="button" (click)="guardar()">{{estado}}</ion-button>
+      <ion-button *ngIf="estado==='actualizar'" type="button" (click)="cancelar()">Cancelar</ion-button>
+
+      <!-- Error Message -->
+      <ion-text *ngIf="error" color="danger">
+        <h6>Debe ingresar nombre y matricula para {{estado}}</h6>
+      </ion-text>
+    </ion-item>
+
+    <ion-item *ngIf="alumnos.length > 0">
+      <!-- Alumnos Table Component -->
+      <app-tabla-alumnos [alumnosList]="alumnos" (eliminar)="eliminar($event)" (editar)="editar($event)">
+      </app-tabla-alumnos>
+    </ion-item>
+  </ion-list>
+</ion-content>
