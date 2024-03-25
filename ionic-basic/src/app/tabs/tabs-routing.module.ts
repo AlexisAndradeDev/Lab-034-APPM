@@ -22,6 +22,10 @@ const routes: Routes = [
         loadChildren: () => import('../presupuesto/presupuesto.module').then(m => m.PresupuestoPageModule)
       },
       {
+        path: 'logout',
+        loadChildren: () => import('../logout/logout.module').then(m => m.LogoutPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/alumnos',
         pathMatch: 'full'

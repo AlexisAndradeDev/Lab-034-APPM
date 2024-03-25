@@ -4,15 +4,15 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
-    <ion-title>Menú principal</ion-title>
+    <ion-title>{{ titleMenu }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-menu side="start" content-id="main">
+<ion-menu side="start" content-id="main" (ionWillOpen)="onMenuOpen()">
   <ion-content id="menuFloat">
     <ion-list>
       <ion-menu-toggle *ngFor="let page of menuData">
-        <ion-item (click)="navegar(page.enlace)">
+        <ion-item (click)="navegar(page.enlace, page.nombre)">
           <ion-icon name='{{page.icono}}'></ion-icon>
           <ion-label>{{ page.nombre }}</ion-label>
         </ion-item>
